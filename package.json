@@ -1,0 +1,29 @@
+{
+  "name": "knex-js-workflows",
+  "version": "1.0.0",
+  "description": "Knex.js Workflows",
+  "main": "index.js",
+  "scripts": {
+    "db:init": "knex init",
+    "db:make": "knex migrate:make --",
+    "db:up": "knex migrate:latest",
+    "db:down": "knex migrate:rollback",
+    "db:cycle": "npm run -s db:down && npm run -s db:up",
+    "seed:make": "knex seed:make --",
+    "seed:run": "knex seed:run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thebearingedge/knex-js-workflows.git"
+  },
+  "author": "Tim Davis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thebearingedge/knex-js-workflows/issues"
+  },
+  "homepage": "https://github.com/thebearingedge/knex-js-workflows#readme",
+  "dependencies": {
+    "knex": "0.11.7",
+    "pg": "6.0.1"
+  }
+}
