@@ -1,10 +1,6 @@
 
-const john = { name: 'John' }
-const pets = [
-  { name: 'Garfield', animal: 'cat' },
-  { name: 'Odie', animal: 'dog' }
-]
-
+import john from './owner.json'
+import pets from './pets.json'
 
 export const seed = async knex => {
 
