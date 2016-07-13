@@ -6,6 +6,7 @@ exports.up = function (knex) {
     .createTable('owners', function (tb) {
       tb.increments('id')
       tb.string('name')
+        .notNullable()
     })
 }
 

@@ -6,7 +6,9 @@ exports.up = function (knex) {
     .createTable('pets', function (tb) {
       tb.increments('id')
       tb.string('name')
+        .notNullable()
       tb.enum('animal', ['dog', 'cat', 'ferret'])
+        .notNullable()
     })
 }
 
