@@ -1,20 +1,18 @@
 
-exports.up = function (knex) {
+export const up = ({ schema }) =>
 
-  return knex
-    .schema
-    .table('pets', function (tb) {
+  schema
+    .table('pets', tb => {
       tb.integer('owner_id')
+        .notNullable()
         .references('id')
         .inTable('owners')
     })
-}
 
-exports.down = function (knex) {
 
-  return knex
-    .schema
-    .table('pets', function (tb) {
+export const down = ({ schema }) =>
+
+  schema
+    .table('pets', tb => {
       tb.dropColumn('owner_id')
     })
-}

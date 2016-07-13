@@ -4,10 +4,11 @@
   "description": "Knex.js Workflows",
   "main": "index.js",
   "scripts": {
-    "db:init": "knex init",
-    "db:make": "knex migrate:make --",
-    "db:up": "knex migrate:latest",
-    "db:down": "knex migrate:rollback",
+    "knex": "babel-node node_modules/.bin/knex --",
+    "db:init": "npm run -s knex init",
+    "db:make": "npm run -s knex migrate:make --",
+    "db:up": "npm run -s knex migrate:latest",
+    "db:down": "npm run -s knex migrate:rollback",
     "db:cycle": "npm run -s db:down && npm run -s db:up",
     "seed:make": "knex seed:make --",
     "seed:run": "knex seed:run"
@@ -25,5 +26,9 @@
   "dependencies": {
     "knex": "0.11.7",
     "pg": "6.0.1"
+  },
+  "devDependencies": {
+    "babel-cli": "6.10.1",
+    "babel-preset-es2015": "6.9.0"
   }
 }
