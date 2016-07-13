@@ -1,5 +1,5 @@
 
-exports.up = function(knex, Promise) {
+exports.up = function (knex) {
 
   return knex
     .schema
@@ -8,13 +8,13 @@ exports.up = function(knex, Promise) {
         .references('id')
         .inTable('owners')
     })
-};
+}
 
-exports.down = function(knex, Promise) {
+exports.down = function (knex) {
 
   return knex
     .schema
     .table('pets', function (tb) {
       tb.dropColumn('owner_id')
     })
-};
+}
