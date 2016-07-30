@@ -2,10 +2,9 @@
 import Knex from 'knex'
 import { development } from '../knexfile.js'
 import chai from 'chai'
-import chaiInterface from 'chai-interface'
+import chaiStruct from 'chai-struct'
 
-
-chai.use(chaiInterface)
+chai.use(chaiStruct)
 
 export const { expect } = chai
 

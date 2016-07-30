@@ -1,22 +1,8 @@
-
 import { begin, expect } from './__setup__'
 import ownersData from '../owners-data'
 
 
 describe('owners', () => {
-
-  const Owner = {
-    id: Number,
-    name: String,
-    pets: Array
-  }
-
-  const Pet = {
-    id: Number,
-    name: String,
-    animal: String,
-    owner_id: Number
-  }
 
   let trx
   let owners
@@ -28,18 +14,19 @@ describe('owners', () => {
 
   afterEach(() => trx.rollback())
 
+  const Owner = {
+    id: Number,
+    name: String,
+    pets: [{ id: Number, name: String, animal: String, owner_id: Number }]
+  }
+
   describe('#findById', () => {
 
     it('reads an owner by id and includes their pets', async () => {
 
       const owner = await owners.findById(1)
 
-      expect(owner).to.have.interface(Owner)
-
-      const [ cat ] = owner.pets
-
-      expect(cat).to.have.interface(Pet)
-      expect(cat.owner_id).to.equal(owner.id)
+      expect(owner).to.have.structure(Owner)
     })
 
   })
@@ -49,25 +36,25 @@ describe('owners', () => {
     it('inserts an owner and their pets', async () => {
 
       const owner = await owners.create({
-        name: 'Bart',
+        name: 'Bart Simpson',
         pets: [
           {
             name: 'Santa\'s Little Helper',
             animal: 'dog'
           },
           {
-            name: 'Snowball V',
+            name: 'Snowball II',
             animal: 'cat'
           }
         ]
       })
 
-      expect(owner).to.have.interface(Owner)
+      expect(owner).to.have.structure(Owner)
 
-      const [ dog ] = owner.pets
+      const [ dog, cat ] = owner.pets
 
-      expect(dog).to.have.interface(Pet)
       expect(dog.owner_id).to.equal(owner.id)
+      expect(cat.owner_id).to.equal(owner.id)
     })
 
   })
