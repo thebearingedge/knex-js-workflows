@@ -1,18 +1,14 @@
 
-exports.up = function (knex) {
+export const up = ({ schema }) =>
 
-  return knex
-    .schema
-    .createTable('owners', function (tb) {
+  schema
+    .createTable('owners', tb => {
       tb.increments('id')
       tb.string('name')
         .notNullable()
     })
-}
 
-exports.down = function (knex) {
 
-  return knex
-    .schema
-    .dropTable('owners')
-}
+export const down = ({ schema }) =>
+
+  schema.dropTable('owners')

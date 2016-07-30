@@ -1,20 +1,16 @@
 
-exports.up = function (knex) {
+export const up = ({ schema }) =>
 
-  return knex
-    .schema
-    .createTable('pets', function (tb) {
+  schema
+    .createTable('pets', tb => {
       tb.increments('id')
       tb.string('name')
         .notNullable()
       tb.enum('animal', ['dog', 'cat', 'ferret'])
         .notNullable()
     })
-}
 
-exports.down = function (knex) {
 
-  return knex
-    .schema
-    .dropTable('pets')
-}
+export const down = ({ schema }) =>
+
+  schema.dropTable('pets')
