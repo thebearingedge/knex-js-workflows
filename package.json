@@ -12,7 +12,7 @@
     "db:cycle": "npm run -s db:down && npm run -s db:up",
     "seed:make": "npm run -s knex seed:make --",
     "seed:run": "npm run -s knex seed:run",
-    "test": "mocha -r babel-register -r babel-polyfill",
+    "test": "npm run db:cycle && mocha -r babel-register -r babel-polyfill",
     "tdd": "npm test -- -w"
   },
   "repository": {
