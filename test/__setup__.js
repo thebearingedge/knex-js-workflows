@@ -1,4 +1,4 @@
-
+/* global before, after */
 import Knex from 'knex'
 import { development } from '../knexfile.js'
 import chai from 'chai'

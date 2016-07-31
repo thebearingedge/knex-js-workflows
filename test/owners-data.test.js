@@ -1,3 +1,4 @@
+/* global beforeEach, afterEach, describe, it */
 import { begin, expect } from './__setup__'
 import ownersData from '../owners-data'
 
