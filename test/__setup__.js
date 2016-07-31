@@ -6,11 +6,11 @@ import chaiStruct from 'chai-struct'
 
 chai.use(chaiStruct)
 
+const rejected = promise => promise.catch(err => err)
+
+const knex = Knex(development)
+
 export const { expect } = chai
-
-export const knex = Knex(development)
-
-export const rejected = promise => promise.catch(err => err)
 
 export const begin = ready => {
   return done => rejected(knex.transaction(trx => {
