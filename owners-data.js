@@ -1,7 +1,8 @@
-
 export default function ownersData(knex) {
 
-  const findById = async (id, trx = knex) => {
+  return { create, findById }
+
+  async function findById(id, trx = knex) {
 
     const owner = await trx
       .select('*')
@@ -20,7 +21,7 @@ export default function ownersData(knex) {
   }
 
 
-  const create = async owner => {
+  async function create(owner) {
 
     return knex.transaction(async trx => {
 
@@ -31,7 +32,7 @@ export default function ownersData(knex) {
         .into('owners')
         .returning('id')
 
-      const ownerPets = pets.map(pet => ({...pet, owner_id }))
+      const ownerPets = pets.map(pet => ({ ...pet, owner_id }))
 
       await trx
         .insert(ownerPets)
@@ -40,6 +41,5 @@ export default function ownersData(knex) {
       return findById(owner_id, trx)
     })
   }
-
-  return { create, findById }
+  
 }
